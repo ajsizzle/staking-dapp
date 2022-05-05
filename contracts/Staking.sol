@@ -22,11 +22,8 @@ contract Staking {
     IERC20 public s_rewardToken;
 
     uint256 public constant REWARD_RATE = 100;
-
     uint256 public s_totalSupply;
-
     uint256 public s_rewardPerTokenStored;
-
     uint256 public s_lastUpdateTime;
 
     /** @dev Mapping from address to the amount the user has staked */
