@@ -9,4 +9,4 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     })
 }
 
-module.exports.tags = ["all", "rewardToken"]
+module.exports.tags = ["all", "rewardtoken"]
