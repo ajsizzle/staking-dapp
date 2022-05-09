@@ -5,19 +5,19 @@
 //      What's some good reward math?
 
 // Added functionality ideas: Use users funds to fund liquidity pools to make income from that?
-// import oppenzeppelin reentrancy guard for extra security
 
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 error Staking__TransferFailed();
 error Withdraw__TransferFailed();
 error Staking__NeedsMoreThanZero();
 
-contract Staking {
+contract Staking is ReentrancyGuard {
     IERC20 public s_stakingToken;
     IERC20 public s_rewardToken;
 
