@@ -1,8 +1,8 @@
 {
+  "name": "dsync-staking",
+  "version": "1.0.0",
+  "description": "Custom staking for Dsync ",
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
-    "@nomiclabs/hardhat-etherscan": "^3.0.3",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.6.0",
     "chai": "^4.3.6",
     "dotenv": "^16.0.0",
@@ -16,5 +16,18 @@
     "prettier-plugin-solidity": "^1.0.0-beta.19",
     "solhint": "^3.3.7",
     "solidity-coverage": "^0.7.21"
-  }
+  },
+  "scripts": {
+    "test": "hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puterhimself/staking-dapp.git"
+  },
+  "author": "Puter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/puterhimself/staking-dapp/issues"
+  },
+  "homepage": "https://github.com/puterhimself/staking-dapp#readme"
 }
