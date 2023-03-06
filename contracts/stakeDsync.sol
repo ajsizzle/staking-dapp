@@ -91,7 +91,7 @@ contract StakeDsync is ReentrancyGuard {
             //amount deposited
             value: value,
             //reward rate: number of tokens earned every day the token value is staked in the contract
-            rewardRate: getTokenRewardDay() * value, 
+            rewardRate: getTokenRewardDay() * (value / 1e18), 
             //the date when the user can start claiming rewards is 4 months
             rewardStartDate: block.timestamp + (4 * 30 days),
             //the date when users can withdraw their tokens is 6 months
