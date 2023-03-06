@@ -73,6 +73,15 @@ contract StakeDsync is ReentrancyGuard {
         return 1e18 / 10000 * 16;
     }
 
+    function getUserReward(bytes32 index) public view returns (uint256) {
+        // require(mStakes[index].initialized, "StakeDsync: Stake not initialized");
+        // require(mStakes[index].beneficiary == msg.sender, "StakeDsync: Not beneficiary");
+        // require(block.timestamp >= mStakes[index].rewardStartDate, "StakeDsync: Reward not available yet");
+        // require(cDsync.balanceOf(address(this)) >= s_totalSupply, "StakeDsync: Reward Tokens surplus error");
+        uint256 reward = mStakes[index].rewardRate * ((block.timestamp - mStakes[index].depositDate) / 1 days);
+        return reward;
+    }
+
     function stake(uint value) external nonReentrant returns (bytes32) {
         require(value > 0, "StakeDsync: Cannot stake 0");
         require(cDsync.transferFrom(msg.sender, address(this), value), "StakeDsync: Transfer failed");
@@ -117,15 +126,6 @@ contract StakeDsync is ReentrancyGuard {
         mStakes[index].Claimed += reward;
         mOwners[msg.sender].totalClaimed += reward;
         s_totalClaimed += reward;
-    }
-
-    function getUserReward(bytes32 index) public view returns (uint256) {
-        // require(mStakes[index].initialized, "StakeDsync: Stake not initialized");
-        // require(mStakes[index].beneficiary == msg.sender, "StakeDsync: Not beneficiary");
-        // require(block.timestamp >= mStakes[index].rewardStartDate, "StakeDsync: Reward not available yet");
-        // require(cDsync.balanceOf(address(this)) >= s_totalSupply, "StakeDsync: Reward Tokens surplus error");
-        uint256 reward = mStakes[index].rewardRate * ((block.timestamp - mStakes[index].depositDate) / 1 days);
-        return reward;
     }
 
     function withdraw(bytes32 index) external nonReentrant {
